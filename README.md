@@ -5,17 +5,20 @@
 <div align="center">
     <h1>WeChatDataAnalysis - 微信数据库解密与分析工具</h1>
     <p>微信4.x数据解密并生成年度总结，高仿微信，支持实时更新，导出聊天记录，朋友圈等大量便捷功能</p>
-    <p>官网链接：https://lifearchiveproject.github.io/WeChatDataAnalysis/</p>
-    <img src="https://img.shields.io/github/v/tag/LifeArchiveProject/WeChatDataAnalysis" alt="Version" />
-    <img src="https://img.shields.io/github/stars/LifeArchiveProject/WeChatDataAnalysis" alt="Stars" />
-    <img src="https://gh-down-badges.linkof.link/LifeArchiveProject/WeChatDataAnalysis" alt="Downloads" />
-    <img src="https://img.shields.io/github/forks/LifeArchiveProject/WeChatDataAnalysis" alt="Forks" />
-    <a href="https://qm.qq.com/q/2IB0gvYpYA"><img src="https://img.shields.io/badge/QQ Group-WeChatDataAnalysis-12B7F5?logo=tencentqq&logoColor=white" alt="QQ Group" /></a>
+    <p>个人维护的 Windows 版本 · <a href="https://github.com/vreacode/WeChatDataAnalysis/releases/latest">下载安装包</a></p>
+    <img src="https://img.shields.io/github/v/tag/vreacode/WeChatDataAnalysis" alt="Version" />
+    <img src="https://img.shields.io/github/stars/vreacode/WeChatDataAnalysis" alt="Stars" />
+    <img src="https://img.shields.io/github/downloads/vreacode/WeChatDataAnalysis/total" alt="Downloads" />
+    <img src="https://img.shields.io/github/forks/vreacode/WeChatDataAnalysis" alt="Forks" />
     <img src="https://img.shields.io/badge/Python-3776AB?logo=Python&logoColor=white" alt="Python" />
     <img src="https://img.shields.io/badge/Vue.js-4FC08D?logo=Vue.js&logoColor=white" alt="Vue.js" />
     <img src="https://img.shields.io/badge/SQLite-003B57?logo=SQLite&logoColor=white" alt="SQLite" />
     <p>如果你需要 QQ 侧的数据解密、分析或年度总结类工具，欢迎体验 <a href="https://github.com/H3CoF6/WeQ">H3CoF6/WeQ</a>；WeQ 作者也是本项目开发成员之一</p>
 </div>
+
+本仓库基于 [LifeArchiveProject/WeChatDataAnalysis](https://github.com/LifeArchiveProject/WeChatDataAnalysis) Fork，保留原项目来源与致谢。个人版包含群聊备注实时刷新修复，提供 Windows x64 安装包；安装包使用个人自签名证书，首次安装可能出现 Windows 来源提示。
+
+安装后启动应用，依次完成「开始检测 → 选择本人账号 → 解密提取 → 回看聊天」。在聊天页面选择联系人和较短时间范围，使用导出功能生成 Excel、HTML 或 TXT。安装包不包含维护者的微信账号、聊天记录、数据库、导出文件或密钥。
 
 ## 年度总结
 
@@ -122,7 +125,7 @@
 
 常规版聚焦于**解密、读取、导出与年度总结**等只读能力；**高级版**在此基础上提供 **77 项写入、在线动作与自动化能力**，覆盖消息修改、消息补录、微信动作、朋友圈同步与互动、群聊与联系人管理、搜索、红包明细及自动化任务。消息发送、会话状态、联系人 / 群聊、朋友圈、搜索、红包明细等高级版在线功能通过独立登录使用，不依赖本机微信客户端版本；消息修改与补录直接作用于本地数据，依赖相应的数据格式支持。当前公开版本仅展示功能说明与演示动画，不包含高级功能的执行实现；实际使用需要获取高级版。
 
-> **获取方式**：进 QQ 3 群 [**1109365501**](https://qm.qq.com/q/2IB0gvYpYA) 私聊咨询群主获取。
+> 本 Fork 提供公开源码中的只读功能；下表为上游高级版功能介绍，不包含在本仓库发布的个人安装包中。
 
 | 模块 | 高级版功能 |
 | --- | --- |
@@ -155,33 +158,20 @@
 
 > Excel 格式生成 `.xlsx` 文件；聊天记录、朋友圈和收藏会将对应格式文件与必要资源一起打包为 ZIP。
 
-## 加入群聊
-
-也欢迎加入下方 QQ 群一起讨论。
-
-<p align="center">
-    <a href="https://qm.qq.com/q/2IB0gvYpYA">
-        <img src="frontend/public/QQImage_1770190010691_1103312318341691201.jpg" alt="WeChatDataAnalysis 加群二维码" width="360" />
-    </a>
-</p>
-
 ## 快速开始
 
 ### 1. 下载桌面安装包（推荐）
 
-1. 打开 Release 页面（最新版）：https://github.com/LifeArchiveProject/WeChatDataAnalysis/releases/latest
-2. Windows 下载 `Setup.exe`；macOS 15+ 的 Apple Silicon Mac 下载 `.dmg` 或 `mac.zip`
+1. 打开[本 Fork 的 Release 页面](https://github.com/vreacode/WeChatDataAnalysis/releases/latest)
+2. Windows x64 下载 `WeChatDataAnalysis-<版本>-Setup.exe`；本 Fork 当前仅提供 Windows 安装包
 3. 安装完成后启动 `WeChatDataAnalysis`
-
->
-> macOS 首次打开若提示来源限制，请在“系统设置 → 隐私与安全性”中确认来自本仓库的应用。图片密钥扫描还可能需要授予终端或应用辅助功能权限。
 
 ### 2. 从源码运行（开发者/高级用户）
 
 #### 2.1 克隆项目
 
 ```bash
-git clone https://github.com/LifeArchiveProject/WeChatDataAnalysis.git
+git clone https://github.com/vreacode/WeChatDataAnalysis.git
 cd WeChatDataAnalysis
 ```
 
