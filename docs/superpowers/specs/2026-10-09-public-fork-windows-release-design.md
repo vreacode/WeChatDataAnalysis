@@ -16,7 +16,9 @@ Publish the current local WeChatDataAnalysis source changes as an attributed pub
 
 - Build the existing Electron NSIS Windows x64 target from `desktop/package.json` using the repository's documented `npm run dist:win` pipeline.
 - Retain the upstream application identity and product name so existing runtime assumptions remain intact.
-- Accept the project's current self-signed/private-PKI signing flow. The Release notes must warn that Windows SmartScreen or publisher prompts may appear.
+- Do not reuse or impersonate the upstream protected `WDA Private PKI` identity. Those signing credentials are intentionally unavailable outside the upstream release environment.
+- Create a separate personal code-signing certificate in the current Windows user's certificate store and use it only for this personal build. Its private key must remain local and must never be committed or uploaded.
+- The Release notes must identify the package as a personal self-signed build and warn that Windows SmartScreen or publisher prompts may appear.
 - Do not invent a second packaging system or reconfigure GitHub Actions for this first personal release.
 
 ## Privacy and secret boundary
