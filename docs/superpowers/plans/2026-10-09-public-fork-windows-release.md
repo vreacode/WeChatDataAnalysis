@@ -187,7 +187,7 @@ version = "2.8.0"
 to:
 
 ```toml
-version = "2.8.0-personal.1"
+version = "2.8.0+personal.1"
 ```
 
 Then run:
@@ -196,7 +196,7 @@ Then run:
 uv lock
 ```
 
-Expected: `pyproject.toml` and the root package entry in `uv.lock` report `2.8.0-personal.1` without unrelated dependency upgrades.
+Expected: Python metadata uses the PEP 440 local version `2.8.0+personal.1` in `pyproject.toml` and the root package entry in `uv.lock`, without unrelated dependency upgrades.
 
 - [ ] **Step 2: Update Electron package metadata without creating a tag**
 
@@ -237,7 +237,7 @@ Run:
 
 ```powershell
 node -e "const p=require('./desktop/package.json'); const l=require('./desktop/package-lock.json'); if(p.version!=='2.8.0-personal.1'||l.version!=='2.8.0-personal.1'||l.packages[''].version!=='2.8.0-personal.1') process.exit(1)"
-rg -n '^version = "2\.8\.0-personal\.1"$' pyproject.toml uv.lock
+rg -n '^version = "2\.8\.0\+personal\.1"$' pyproject.toml uv.lock
 git diff --check
 git add -- pyproject.toml uv.lock desktop/package.json desktop/package-lock.json docs/releases/v2.8.0-personal.1.md
 git commit -m "chore: prepare v2.8.0-personal.1"
