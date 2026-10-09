@@ -796,7 +796,7 @@ def _scan_db_storage_mtime_ns(db_storage_dir: Path, *, scope: str = "all") -> in
 
     scope_norm = "chat" if str(scope or "").strip().lower() == "chat" else "all"
     chat_only = scope_norm == "chat"
-    allowed_buckets = {"message", "session"} if chat_only else {
+    allowed_buckets = {"message", "session", "contact"} if chat_only else {
         "message",
         "session",
         "contact",
@@ -4928,7 +4928,10 @@ def list_chat_sessions(
             if not u:
                 continue
             row = contact_rows.get(u)
-            if _pick_display_name(row, u) == u:
+            # Realtime mode must refresh names even when the decrypted contact
+            # snapshot already has one: WeChat stores newly edited remarks in
+            # contact.db before the next explicit decrypt/sync.
+            if source_norm == "realtime" or _pick_display_name(row, u) == u:
                 need_display.append(u)
 
         need_display = list(dict.fromkeys(need_display))

@@ -50,6 +50,15 @@ class TestChatRealtimeChangeScan(unittest.TestCase):
             session_path.write_bytes(b"new-session")
             self.assertGreater(_scan_db_storage_mtime_ns(root, scope="chat"), 0)
 
+    def test_chat_scope_tracks_contact_writes_for_live_session_names(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            contact_wal = root / "contact" / "contact.db-wal"
+            contact_wal.parent.mkdir(parents=True)
+            contact_wal.write_bytes(b"updated-group-remark")
+
+            self.assertGreater(_scan_db_storage_mtime_ns(root, scope="chat"), 0)
+
     def test_sse_ready_event_uses_current_mtime_as_its_baseline(self):
         from wechat_decrypt_tool.routers import chat
 

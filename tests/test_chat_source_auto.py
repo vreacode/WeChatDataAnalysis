@@ -66,7 +66,7 @@ class TestChatSourceAuto(unittest.TestCase):
         self.assertEqual(result, {"wxid_known": "Local group card"})
         native_loader.assert_not_called()
 
-    def test_realtime_sessions_do_not_refresh_complete_local_contact_metadata(self):
+    def test_realtime_sessions_refresh_complete_local_contact_metadata(self):
         with TemporaryDirectory() as td:
             account_dir = Path(td) / "acc"
             account_dir.mkdir(parents=True, exist_ok=True)
@@ -106,7 +106,11 @@ class TestChatSourceAuto(unittest.TestCase):
                     },
                 ),
                 patch.object(chat_router, "_query_head_image_usernames", return_value=set()),
-                patch.object(chat_router, "_wcdb_get_display_names", return_value={}) as display_names,
+                patch.object(
+                    chat_router,
+                    "_wcdb_get_display_names",
+                    return_value={username: "Live group remark"},
+                ) as display_names,
                 patch.object(chat_router, "_wcdb_get_avatar_urls", return_value={}) as avatar_urls,
                 patch.object(chat_router, "_avatar_url_unified", return_value="/avatar"),
             ):
@@ -120,8 +124,8 @@ class TestChatSourceAuto(unittest.TestCase):
                     source="realtime",
                 )
 
-        self.assertEqual((resp.get("sessions") or [])[0].get("name"), "Cached contact name")
-        display_names.assert_not_called()
+        self.assertEqual((resp.get("sessions") or [])[0].get("name"), "Live group remark")
+        display_names.assert_called_once_with(conn.handle, [username])
         avatar_urls.assert_not_called()
 
     def test_sessions_auto_prefers_realtime_when_available(self):
