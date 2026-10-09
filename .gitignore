@@ -80,6 +80,7 @@ pnpm-lock.yaml
 /chat-home.yml
 /group-before.yml
 /nul`r`ncl.exe
+/.worktrees/
 
 # Native-core developer artifacts are supplied by the producer workflow.
 # Source mode downloads and verifies these native-core files into the per-user
