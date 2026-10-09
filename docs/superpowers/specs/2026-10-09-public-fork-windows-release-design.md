@@ -2,7 +2,7 @@
 
 ## Goal
 
-Publish the current local WeChatDataAnalysis source changes as an attributed public GitHub fork and provide a verified Windows x64 installer in GitHub Release `v2.1.5-personal.1`.
+Publish the current local WeChatDataAnalysis source changes as an attributed public GitHub fork and provide a verified Windows x64 installer in GitHub Release `v2.8.0-personal.1`.
 
 ## Publication model
 
@@ -10,7 +10,7 @@ Publish the current local WeChatDataAnalysis source changes as an attributed pub
 - Preserve the upstream Git history and attribution. Do not present the fork as an independently authored project.
 - Keep `upstream` pointing to `LifeArchiveProject/WeChatDataAnalysis` and use the user's fork as `origin` after the fork has been created.
 - Publish the current group-chat remark refresh fix and its regression tests as a focused commit.
-- Tag the verified release commit as `v2.1.5-personal.1`.
+- Tag the verified release commit as `v2.8.0-personal.1`.
 
 ## Installer design
 
@@ -56,7 +56,7 @@ Before pushing, inspect tracked files, untracked files, the staged diff, and the
 
 The Release will contain:
 
-- tag and title `v2.1.5-personal.1`
+- tag and title `v2.8.0-personal.1`
 - the verified Windows x64 `Setup.exe`
 - concise attribution to the upstream project
 - a summary of the group-chat remark refresh fix
@@ -70,5 +70,5 @@ No chat records, test exports, source archives manually assembled from the worki
 - The fork is public and visibly linked to the upstream repository.
 - The current local fix and tests are committed without unrelated or sensitive files.
 - The Windows x64 installer builds and passes the available smoke/integrity checks.
-- The installer is downloadable from GitHub Release `v2.1.5-personal.1`.
+- The installer is downloadable from GitHub Release `v2.8.0-personal.1`.
 - The published asset hash matches the locally verified installer.
